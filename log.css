@@ -1,0 +1,99 @@
+
+/* General Styling */
+body {
+    background:linear-gradient(-45deg, #1e3c72, #2a5298, #4e4376, #3a6186); ; /* Make sure the path is correct */
+    background-size: cover;  /* Covers the entire screen */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents repetition */
+    background-attachment: fixed; /* Fixes the image, no movement */
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+
+.hidden {
+    display: none;
+}
+
+
+/* Centering the main container */
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+}
+
+/* Heading */
+h1, h2 {
+    color: #008C72; /* Dark Mint */
+    margin-bottom: 20px;
+}
+
+/* Input Fields */
+input {
+    width: 90%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+/* Buttons */
+button {
+    width: 95%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #008C72;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #006B55; /* Darker mint */
+}
+
+/* Navigation Buttons */
+.buttons a {
+    display: block;
+    text-decoration: none;
+    background-color: #00B89F;
+    color: white;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.buttons a:hover {
+    background-color: #008C72;
+}
+
+/* Health Data List */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    background: #f8f8f8;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}

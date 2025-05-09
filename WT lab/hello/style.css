@@ -1,0 +1,21 @@
+.tab1{
+    background:linear-gradient(to right,rgb(142, 240, 142),rgb(151, 151, 216),rgb(162, 219, 162));
+}
+.tab2{
+    background-color:rgb(113, 218, 218);
+    background-repeat: no-repeat;
+    background-position: center;
+    border-color: rgb(245, 81, 108);
+}
+span{
+    color:rgb(245, 81, 108);
+}
+.lines{
+    border-top:none;
+    border-top-color:rgb(247, 183, 195);
+    border-bottom-color: rgb(247, 183, 195);
+    text-align: left;
+}
+.shade{
+    background-color:rgb(241, 42, 75);
+}

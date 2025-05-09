@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWAPPING THREE VRIABLES</title>
+</head>
+<body>
+    <P id="para1"></P>
+    <p id="para2"></p>
+    <script>
+        let a=parseInt(prompt("Enter a:"));
+        let b=parseInt(prompt("Enter b:"));
+        let c=parseInt(prompt("Enter c:"));
+        let para1=document.getElementById("para1");
+        para1.innerHTML='Inputresult=>'+a+"<br/>"+b+"<br/>"+c
+        a=a^b^c;
+        b=a^b^c;
+        c=a^b^c;
+        a=a^b^c;
+        let para2=document.getElementById("para2");
+        para2.innerHTML='outputresult=>'+a+"<br/>"+b+"<br/>"+c
+    </script>
+</body>
+</html>

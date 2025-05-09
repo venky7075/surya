@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Health Monitoring</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(-45deg, #1e3c72, #2a5298, #4e4376, #3a6186);
+            background-size: 400% 400%;
+            animation: gradientAnimation 8s infinite alternate;
+        }
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .signup-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 350px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .signup-container:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+        }
+        .signup-container h2 {
+            margin-bottom: 15px;
+            color: #1e3c72;
+            font-weight: 600;
+        }
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
+            font-size: 16px;
+        }
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            border: none;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background: linear-gradient(135deg, #2a5298, #1e3c72);
+            transform: scale(1.05);
+        }
+        .terms {
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            z-index: 1000;
+        }
+        .popup button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #2a5298;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Sign Up</h2>
+        <input type="text" id="fullname" class="input-field" placeholder="Full Name">
+        <input type="email" id="email" class="input-field" placeholder="Email">
+        <input type="text" id="username" class="input-field" placeholder="Username">
+        <input type="password" id="password" class="input-field" placeholder="Password">
+        <input type="password" id="confirm-password" class="input-field" placeholder="Confirm Password">
+        <div class="terms">
+            
+            <input type="checkbox" id="terms"> I agree to the Terms & Conditions
+        </div>
+        <button class="btn" onclick="signup()">Sign Up</button>
+    </div>
+    
+    <div id="popup" class="popup">
+        <p id="popup-message"></p>
+        <button onclick="closePopup()">OK</button>
+    </div>
+    
+    <script>
+        function signup() {
+            const fullname = document.getElementById("fullname").value;
+            const email = document.getElementById("email").value;
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirm-password").value;
+            const terms = document.getElementById("terms").checked;
+            const popup = document.getElementById("popup");
+            const popupMessage = document.getElementById("popup-message");
+
+            if (!fullname || !email || !username || !password || !confirmPassword) {
+                popupMessage.innerText = "Please fill in all fields.";
+                popup.style.display = "block";
+                return;
+            }
+            if (password !== confirmPassword) {
+                popupMessage.innerText = "Passwords do not match.";
+                popup.style.display = "block";
+                return;
+            }
+            if (!terms) {
+                popupMessage.innerText = "You must agree to the Terms & Conditions.";
+                popup.style.display = "block";
+                return;
+            }
+
+            const user = { fullname, email, username, password };
+            localStorage.setItem("user", JSON.stringify(user));
+            popupMessage.innerText = "Sign-up successful! Welcome, " + fullname;
+            popup.style.display = "block";
+        }
+        
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+    </script>
+</body>
+</html>

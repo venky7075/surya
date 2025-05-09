@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Care Sense - Intelligent Health Monitoring</title>
+    <link rel="stylesheet" href="index.css">
+    <script>
+        function checkSymptoms() {
+            var symptoms = document.getElementById("symptomInput").value;
+            var resultDiv = document.getElementById("result");
+
+            if (symptoms.trim() === "") {
+                resultDiv.innerHTML = "<p style='color: red;'>Please enter your symptoms.</p>";
+                return;
+            }
+
+            // Simulated condition analysis (Replace this with actual API or logic)
+            var conditions = {
+                "fever": "You may have the flu or an infection. Stay hydrated and consult a doctor if it persists.",
+                "headache": "This could be due to stress, dehydration, or migraines. Try resting and drinking water.",
+                "cough": "It might be a cold or allergy. If severe, see a doctor.",
+                "stomach pain": "It could be indigestion or an infection. Avoid spicy food and drink warm water."
+            };
+
+            var response = conditions[symptoms.toLowerCase()] || "Symptom not recognized. Please consult a doctor.";
+
+            resultDiv.innerHTML = "<p><strong>Analysis:</strong> " + response + "</p>";
+        }
+    </script>
+</head>
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    background-color: #f0f8ff; /* Light Cyan */
+    color: black;
+}
+
+/* HEADER */
+.header {
+    height: 25%;
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Teal & Blue */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+}
+
+/* NAVIGATION */
+.nav {
+    display: flex;
+    gap: 20px;
+    margin-left: auto;
+}
+
+.nav button {
+    background: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #6a11cb;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nav button:hover {
+    background: #6a11cb;
+    color: white;
+}
+
+/* MAIN CONTENT */
+.main-content {
+    height: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #f6d365, #fda085); /* Soft Yellow-Orange */
+    padding: 5%;
+}
+
+.left-content {
+    width: 50%;
+}
+
+.title {
+    font-size: 48px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+.login-btn {
+    padding: 16px 32px;
+    font-size: 22px;
+    background: #6a11cb;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.login-btn:hover {
+    background: #2575fc;
+}
+
+/* FORM BOX */
+.cloud-box {
+    padding: 40px;
+    width: 80%;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.cloud-box input {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 12px;
+    outline: none;
+    background: #f8f9fa;
+    box-shadow: inset 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.submit-btn {
+    padding: 12px 20px;
+    font-size: 18px;
+    background: #6a11cb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    background: #2575fc;
+}
+
+/* FEATURE BOXES */
+.scroll-section {
+    padding: 5%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Feature Box Styling */
+.feature-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4); /* Soft Pink */
+    border-radius: 15px;
+    padding: 20px;
+    width: 45%;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+/* First and Third Box Left, Second Box Right */
+.feature-box:nth-child(1), 
+.feature-box:nth-child(3) {
+    align-self: flex-start;
+}
+
+.feature-box:nth-child(2) {
+    align-self: flex-end;
+}
+
+/* Image and Text Sizes */
+.feature-box img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+.feature-box h3 {
+    font-size: 22px;
+}
+
+.feature-box p {
+    font-size: 16px;
+}
+
+.feature-box a {
+    color: #6a11cb;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.feature-box a:hover {
+    color: #2575fc;
+}
+
+/* ARTICLE SECTION */
+.article-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 5%;
+}
+
+.article-box {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+.article-box:hover {
+    transform: scale(1.05);
+}
+
+.article-box img {
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+.article-box div {
+    display: flex;
+    flex-direction: column;
+}
+
+.article-box h4 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.article-box a {
+    color: #6a11cb;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 5px;
+    transition: 0.3s;
+}
+
+.article-box a:hover {
+    color: #2575fc;
+}
+
+/* FOOTER */
+.footer {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    margin-top: 40px;
+}
+</style>
+<body>
+
+    <div class="section">
+        <div class="header">
+            <div class="logo">Care Sense</div>
+            <div class="nav">
+                <button>Conditions</button>
+                <button>Mental Health</button>
+                <button>Find a Doctor</button>
+                <button>Login</button>
+                <button>Help</button>
+                <button>About</button>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="left-content">
+                <div class="title">Care Sense<br>Intelligent Health Monitoring at Your Fingertips...</div>
+                <button class="login-btn">Login</button>
+            </div>
+            <div class="right-content">
+                <div class="cloud-box">
+                    <input type="text" id="symptomInput" placeholder="Enter your symptoms...">
+                    <button class="submit-btn" onclick="checkSymptoms()">Submit</button>
+                    <div id="result"></div> <!-- Result Display -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+

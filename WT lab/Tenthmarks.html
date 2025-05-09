@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSC Marks Memo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4; /* Light background for the rest of the page */
+        }
+        .memo-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: linear-gradient(to left, #4caf50, #a5d6a7); /* Green gradient background */
+            border: 10px solid #4caf50;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            text-transform: uppercase;
+            color: #fff; /* White text for contrast */
+        }
+        .header h2 {
+            margin: 0;
+            font-size: 18px;
+            color: #fff;
+        }
+        .details, .marks-table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+        .details td {
+            padding: 5px 10px;
+            vertical-align: top;
+        }
+        .details td.label {
+            font-weight: bold;
+            width: 30%;
+        }
+        .profile-photo {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            height: 120px;
+            border: 1px solid #000;
+            background: url('/home/surya/WT lab/burya.jpeg/100x120') center center no-repeat;
+            background-size: cover;
+        }
+        .qr-code-left {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+            background: url('qr.png') center center no-repeat;
+            background-size: cover;
+        }
+        .marks-table th, .marks-table td {
+            border: 1px solid #000;
+            text-align: center;
+            padding: 10px;
+        }
+        .marks-table th {
+            background-color: #c8e6c9;
+            font-weight: bold;
+        }
+        /* Background image applied to the table */
+        .marks-table {
+            background: url('logo.jpeg/400x200') no-repeat center center;
+            background-size: 50%; /* Adjust size of the background image */
+            background-position: center center; /* Center the image */
+            opacity: 0.3; /* Make the background image transparent */
+        }
+        .total-section {
+            text-align: right;
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff; /* White text for total section */
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #fff; /* White text for footer */
+        }
+    </style>
+</head>
+<body>
+    <div class="memo-container">
+        <div class="header">
+            <h1>Board of Secondary Education, Andhra Pradesh</h1>
+            <h2>Secondary School Certificate</h2>
+        </div>
+
+        <div class="profile-photo"></div>
+        <div class="qr-code-left"></div>
+
+        <table class="details">
+            <tr>
+                <td class="label">Certified That:</td>
+                <td>Naru Surya Charan</td>
+            </tr>
+            <tr>
+                <td class="label">Father Name:</td>
+                <td>Naru Chinna Subbarayudu</td>
+            </tr>
+            <tr>
+                <td class="label">Mother Name:</td>
+                <td>Naru Balasubbamma</td>
+            </tr>
+            <tr>
+                <td class="label">Roll Number:</td>
+                <td>2122115919</td>
+            </tr>
+            <tr>
+                <td class="label">School Name:</td>
+                <td>ZP High School, Settiparipalli</td>
+            </tr>
+            <tr>
+                <td class="label">District:</td>
+                <td>Y.S.R District</td>
+            </tr>
+            <tr>
+                <td class="label">Date of Birth:</td>
+                <td>24/11/2005</td>
+            </tr>
+        </table>
+
+        <table class="marks-table">
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Marks Secured (Figures)</th>
+                    <th>Marks Secured (Words)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>First Language (Telugu)</td>
+                    <td>98</td>
+                    <td>Ninety Eight</td>
+                </tr>
+                <tr>
+                    <td>Second Language (Hindi)</td>
+                    <td>97</td>
+                    <td>Ninety Seven</td>
+                </tr>
+                <tr>
+                    <td>Third Language (English)</td>
+                    <td>95</td>
+                    <td>Ninety Five</td>
+                </tr>
+                <tr>
+                    <td>Mathematics</td>
+                    <td>100</td>
+                    <td>One Hundred</td>
+                </tr>
+                <tr>
+                    <td>General Science</td>
+                    <td>97</td>
+                    <td>Ninety Seven</td>
+                </tr>
+                <tr>
+                    <td>Social Studies</td>
+                    <td>98</td>
+                    <td>Ninety Eight</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="total-section">
+            Grand Total: 585 (Five Eight Five)
+        </div>
+
+        <div class="footer">
+            <p>Marks of Identification: 1) A mole on the right index finger, 2) A mole on the left palm</p>
+            <p>Date of Issue: 06-Aug-2021</p>
+            <p>Signature: ______________________</p>
+        </div>
+    </div>
+</body>
+</html>

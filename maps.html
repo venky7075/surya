@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospitals in India</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #map {
+            width: 100%;
+            height: 600px;
+            margin-top: 20px;
+        }
+        #search-container {
+            margin: 20px auto;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #search-bar {
+            padding: 10px;
+            width: 80%;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        #results {
+            width: 80%;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            text-align: left;
+            display: none;
+            background: white;
+        }
+        .result-item {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+        }
+        .result-item:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hospitals in India</h1>
+    <div id="search-container">
+        <input type="text" id="search-bar" placeholder="Search for a hospital..." onkeyup="filterHospitals()">
+        <div id="results"></div>
+    </div>
+    <div id="map"></div>
+    
+    <script>
+        var map = L.map('map').setView([20.5937, 78.9629], 5);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        var hospitals = [
+            // Top 10 Hospitals in India
+            { name: "AIIMS, Delhi", lat: 28.5672, lng: 77.2100, address: "New Delhi", specialty: "Multi-specialty" },
+            { name: "Fortis Memorial, Gurgaon", lat: 28.4595, lng: 77.0720, address: "Gurgaon", specialty: "Cardiology" },
+            { name: "Apollo Hospitals, Chennai", lat: 13.0633, lng: 80.2467, address: "Chennai", specialty: "Neurology" },
+            { name: "Medanta, Gurgaon", lat: 28.4295, lng: 77.0400, address: "Gurgaon", specialty: "Transplants" },
+            { name: "Narayana Health, Bangalore", lat: 12.8452, lng: 77.6607, address: "Bangalore", specialty: "Cardiac Surgery" },
+            { name: "Max Super Specialty, Delhi", lat: 28.5700, lng: 77.2058, address: "New Delhi", specialty: "Orthopedics" },
+            { name: "Tata Memorial, Mumbai", lat: 18.9986, lng: 72.8406, address: "Mumbai", specialty: "Cancer Treatment" },
+            { name: "Kokilaben Ambani, Mumbai", lat: 19.1355, lng: 72.8241, address: "Mumbai", specialty: "Multi-specialty" },
+            { name: "CMC Vellore", lat: 12.9237, lng: 79.1336, address: "Vellore", specialty: "General Surgery" },
+            { name: "Lilavati Hospital, Mumbai", lat: 19.0713, lng: 72.8354, address: "Mumbai", specialty: "Multi-specialty" },
+
+            // Top 10 in Andhra Pradesh
+            { name: "KIMS Hospital, Vijayawada", lat: 16.5062, lng: 80.6480, address: "Vijayawada", specialty: "Cardiology" },
+            { name: "Apollo Hospital, Visakhapatnam", lat: 17.6868, lng: 83.2185, address: "Visakhapatnam", specialty: "Neurology" },
+            { name: "Manipal Hospital, Vijayawada", lat: 16.5101, lng: 80.6416, address: "Vijayawada", specialty: "Nephrology" },
+            { name: "Sunshine Hospitals, Guntur", lat: 16.3067, lng: 80.4365, address: "Guntur", specialty: "Orthopedics" },
+            { name: "Care Hospital, Visakhapatnam", lat: 17.7231, lng: 83.3031, address: "Visakhapatnam", specialty: "Multi-specialty" },
+            { name: "Omega Hospital, Guntur", lat: 16.3080, lng: 80.4375, address: "Guntur", specialty: "Oncology" },
+            { name: "Ramesh Hospital, Vijayawada", lat: 16.5123, lng: 80.6468, address: "Vijayawada", specialty: "Cardiac Care" },
+            { name: "Latha Super Speciality, Rajahmundry", lat: 17.0005, lng: 81.8040, address: "Rajahmundry", specialty: "Gynecology" },
+            { name: "Gayatri Vidya Parishad Hospital, Visakhapatnam", lat: 17.7492, lng: 83.3195, address: "Visakhapatnam", specialty: "Neurology" },
+            { name: "Sri Sri Holistic Hospital, Kakinada", lat: 16.9334, lng: 82.2149, address: "Kakinada", specialty: "General Surgery" }
+        ];
+
+        var markers = hospitals.map(hospital => {
+            var marker = L.marker([hospital.lat, hospital.lng]).addTo(map);
+            marker.bindPopup(`<b>${hospital.name}</b><br>${hospital.address}<br><b>Specialty:</b> ${hospital.specialty}`);
+            return { marker, hospital };
+        });
+
+        function filterHospitals() {
+            var input = document.getElementById("search-bar").value.toLowerCase();
+            var resultsContainer = document.getElementById("results");
+            resultsContainer.innerHTML = "";
+            resultsContainer.style.display = "none";
+            
+            var filtered = hospitals.filter(h => h.name.toLowerCase().includes(input));
+            if (filtered.length > 0) {
+                resultsContainer.style.display = "block";
+                filtered.forEach(hospital => {
+                    var div = document.createElement("div");
+                    div.className = "result-item";
+                    div.innerHTML = `<b>${hospital.name}</b> - ${hospital.specialty}`;
+                    div.onclick = function() {
+                        map.setView([hospital.lat, hospital.lng], 10);
+                    };
+                    resultsContainer.appendChild(div);
+                });
+            }
+        }
+    </script>
+</body>
+</html>

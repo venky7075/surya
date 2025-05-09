@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Analysis</title>
+</head>
+<body>
+    <h1>File Analyzer</h1>
+    <input type="file" id="fileInput" />
+    <button onclick="analyzeFile()">Analyze File</button>
+
+    <h2>Results</h2>
+    <p>Number of Letters: <span id="lettersCount">0</span></p>
+    <p>Number of Lines: <span id="linesCount">0</span></p>
+    <p>Number of Words: <span id="wordsCount">0</span></p>
+    <p>Numerical Values: <span id="numbersCount">0</span></p>
+    <p>Special Characters: <span id="specialCharsCount">0</span></p>
+
+    <script>
+        function analyzeFile() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            if (!file) {
+                alert('Please select a file to analyze.');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                const content = event.target.result;
+
+                const letters = content.match(/[a-zA-Z]/g) || [];
+                const lines = content.split(/\r\n|\r|\n/);
+                const words = content.match(/\b\w+\b/g) || [];
+                const numbers = content.match(/\b\d+\b/g) || [];
+                const specialChars = content.match(/[^a-zA-Z0-9\s]/g) || [];
+
+                document.getElementById('lettersCount').textContent = letters.length;
+                document.getElementById('linesCount').textContent = lines.length;
+                document.getElementById('wordsCount').textContent = words.length;
+                document.getElementById('numbersCount').textContent = numbers.length;
+                document.getElementById('specialCharsCount').textContent = specialChars.length;
+            };
+
+            reader.readAsText(file);
+        }
+    </script>
+</body>
+</html>
